@@ -1,3 +1,8 @@
+:root {
+    --compact-sidebar: 120px;
+    --full-sidebar: 200px
+}
+
 /* Universal styles */
 html, body {
     width: 100%;
@@ -33,6 +38,10 @@ header h1 {
     font-size: 2rem !important;
 }
 
+nav {
+    position: fixed;
+}
+
 ul li{
     list-style-type: none !important;
 }
@@ -45,16 +54,23 @@ ul li{
     main {
         margin: 16px;
     }
+    nav {}
 }
 /* Medium */
 @media only screen and (max-width: 840px) {
     main {
         margin: 24px;
+        margin-left: 120px;
     }
 }
 /* Large */
 @media only screen and (min-width: 841px) {
     main {
         margin: 24px;
+        margin-left: 200px;
+    }
+    nav {
+        height: calc(100vh - 70px);
+        top: 70px;
     }
 }

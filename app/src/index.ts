@@ -1,3 +1,4 @@
+import { Controller } from "./controllers/controller.js";
 import { EmployeesListController } from "./controllers/employees-list-controller.js";
 
-const abc = new EmployeesListController();
+let controller: Controller = new EmployeesListController();
