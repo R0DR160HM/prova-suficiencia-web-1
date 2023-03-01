@@ -1,9 +1,10 @@
-import { Employee } from "../models/Employee.js";
+import { Employee } from "../shared/models/Employee.js";
+import { PageableResponse } from "../shared/models/PageableResponse.js";
 import { View } from "./view.js";
 
-export class EmployeesListView extends View<Employee[]> {
+export class EmployeesListView extends View<PageableResponse<Employee>> {
 
-    protected template(model: Employee[]): string {
+    protected template(model: PageableResponse<Employee>): string {
         return `
         
         <section class="card p-5">
@@ -19,7 +20,7 @@ export class EmployeesListView extends View<Employee[]> {
                     </tr>
                 </thead>
                 <tbody>
-                    ${ model.map(employee => `
+                    ${ model.records.map(employee => `
                     <tr>
                         <th class="d-none d-sm-table-cell align-middle">${ employee?.id || -1 }</th>
                         <th class="align-middle text-center">
@@ -34,15 +35,13 @@ export class EmployeesListView extends View<Employee[]> {
 
             <nav aria-label="Teste paginação">
                 <ul class="pagination">
-                    <li class="page-item disabled">
+                    <li class="page-item ${ model.hasPrevious ? '' : 'disabled' }" role="button" id="paginator-previous">
                         <a class="page-link"> \<\< </a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
                     <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">2</a>
+                        <a class="page-link" href="#">${ model.pageIndex + 1 }</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
+                    <li class="page-item ${ model.hasNext ? '' : 'disabled' }" role="button" id="paginator-next">
                         <a class="page-link" href="#"> \>\> </a>
                     </li>
                 </ul>

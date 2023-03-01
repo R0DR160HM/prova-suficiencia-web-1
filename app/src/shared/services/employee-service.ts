@@ -1,5 +1,6 @@
-import { Employee } from "../../models/Employee.js";
-import { GenericResponse } from "../../models/GenericResponse.js";
+import { Employee } from "../models/Employee.js";
+import { GenericResponse } from "../models/GenericResponse.js";
+import { PageableResponse } from "../models/PageableResponse.js";
 import { http } from "../core/http.js";
 
 const BASE_URL = 'https://dummy.restapiexample.com/api/v1';
@@ -16,8 +17,16 @@ export class EmployeeService {
      */
     public async fetch(pageIndex = 0, pageSize = 10) {
         const employees = await this.fetchAll();
+        const length = employees.length;
         const startIndex = pageIndex * pageSize;
-        return employees.splice(startIndex, pageSize);
+        const records = employees.splice(startIndex, pageSize);
+        return new PageableResponse<Employee>(
+            records,
+            pageIndex,
+            pageSize,
+            (startIndex + pageSize) < length,
+            pageIndex !== 0
+        );
     }
 
     public async fetchAll() {
