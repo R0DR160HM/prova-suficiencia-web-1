@@ -1,0 +1,55 @@
+/* Universal styles */
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    font-family: sans-serif, Helvetica, Arial;
+}
+
+header {
+    width: 100%;
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.2);
+    padding: 1%;
+    position: static;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0 !important;
+}
+
+body {
+    background-color: whitesmoke !important;
+}
+
+header {
+    background-color: white;
+}
+header h1 {
+    font-size: 2rem !important;
+}
+
+
+
+/* Tamanhos Material.io */
+/* Small */
+@media only screen and (max-width: 600px) {
+    main {
+        margin: 16px;
+    }
+}
+/* Medium */
+@media only screen and (max-width: 840px) {
+    main {
+        margin: 24px;
+    }
+}
+/* Large */
+@media only screen and (min-width: 841px) {
+    main {
+        margin: 24px;
+    }
+}

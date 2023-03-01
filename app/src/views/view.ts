@@ -12,10 +12,8 @@ export abstract class View<T> {
     protected abstract template(model?: T): string;
 
     public update(model?: T) {
-        const div = document.createElement('div');
         const template = this.template(model);
-        div.innerHTML = template;
-        this.parent.appendChild(div);
+        this.parent.innerHTML = template;
     }
 
 }
