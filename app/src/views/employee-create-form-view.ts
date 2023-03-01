@@ -1,10 +1,9 @@
-import { html } from "../shared/html.js";
 import { View } from "./view.js";
 
 export class EmployeeCreateFormView extends View<undefined> {
     
     protected template(): string {
-        return html`
+        return `
         
         <section class="card p-5">
             <h2 class="mb-3">Cadastrar funcionário</h2>

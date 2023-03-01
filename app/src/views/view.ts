@@ -13,6 +13,7 @@ export abstract class View<T> {
 
     public update(model?: T) {
         const template = this.template(model);
+        console.log(template);
         this.parent.innerHTML = template;
     }
 
