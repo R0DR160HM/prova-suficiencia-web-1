@@ -9,7 +9,7 @@ enum HttpMethod {
 async function request<T>(url: string, method: HttpMethod, body?: any) {
     const options = { method, headers: { 'Content-Type': 'application/json' } };
     if (body) {
-        Object.assign(options, { body });
+        Object.assign(options, { body: JSON.stringify(body) });
     }
 
     const response = await fetch(url, options);

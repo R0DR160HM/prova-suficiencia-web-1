@@ -4,9 +4,10 @@
   "description": "Prova de suficiência para a disciplina de Desenvolvimento Web 1 do curso de Ciências da Computação da FURB",
   "main": "index.js",
   "scripts": {
-    "compile": "npx tsc --w",
-    "serve": "live-server .",
-    "start": "concurrently --kill-others \"npm run compile\" \"npm run serve\""
+    "compile": "npx tsc",
+    "watch": "npx tsc --w",
+    "serve": "lite-server --baseDir=app",
+    "start": "concurrently --kill-others \"npm run watch\" \"npm run serve\""
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,10 @@
     "url": "https://github.com/ottimizza/prova-suficiencia-web-1/issues"
   },
   "homepage": "https://github.com/ottimizza/prova-suficiencia-web-1#readme",
+  "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.6.0",
+    "lite-server": "^2.6.1",
     "typescript": "^4.9.5"
   }
 }
