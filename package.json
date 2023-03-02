@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/R0DR160M/prova-suficiencia-web-1.git"
+    "url": "git+https://github.com/R0DR160HM/prova-suficiencia-web-1.git"
   },
   "author": "Rodrigo Heinzen de Moraes",
   "bugs": {
-    "url": "https://github.com/R0DR160M/prova-suficiencia-web-1/issues"
+    "url": "https://github.com/R0DR160HM/prova-suficiencia-web-1/issues"
   },
-  "homepage": "https://github.com/R0DR160M/prova-suficiencia-web-1#readme",
+  "homepage": "https://github.com/R0DR160HM/prova-suficiencia-web-1#readme",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.6.0",
