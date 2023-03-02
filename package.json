@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "watch": "npx tsc --w",
-    "serve": "lite-server --baseDir=app",
+    "serve": "lite-server --baseDir=src",
     "start": "concurrently --kill-others \"npm run watch\" \"npm run serve\""
   },
   "repository": {
