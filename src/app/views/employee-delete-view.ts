@@ -24,6 +24,7 @@ export class EmployeeDeleteView extends View<{ error?: string, employee?: Employ
                     <i class="fa fa-user-slash me-2"></i>
                     Funcionário não existe
                 </p>
+            </div>
             ` : '' }
 
             ${ model?.deleted ? `
@@ -32,6 +33,7 @@ export class EmployeeDeleteView extends View<{ error?: string, employee?: Employ
                     <i class="fa fa-smile me-2"></i>
                     Funcionário excluído com sucesso
                 </p>
+            </div>
             ` : '' }
 
             <form id="find-employee-form">

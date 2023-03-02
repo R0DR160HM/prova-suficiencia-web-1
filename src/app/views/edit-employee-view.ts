@@ -24,6 +24,7 @@ export class EditEmployeeView extends View<{ error?: string, employee?: Employee
                     <i class="fa fa-user-slash me-2"></i>
                     Funcionário não existe
                 </p>
+            </div>
             ` : '' }
 
             ${ model?.edited ? `
@@ -32,6 +33,7 @@ export class EditEmployeeView extends View<{ error?: string, employee?: Employee
                     <i class="fa fa-smile me-2"></i>
                     Funcionário alterado com sucesso
                 </p>
+            </div>
             ` : '' }
 
             <form id="find-employee-form">
