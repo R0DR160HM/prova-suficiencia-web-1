@@ -1,7 +1,11 @@
+import { DomInjector } from "../shared/decorators/dom-injection-decorator.js";
 import { EmployeeDeleteView } from "../views/employee-delete-view.js";
 import { Controller } from "./controller.js";
 
 export class EmployeeDeleteController extends Controller {
+
+    @DomInjector('#find-employee-form')
+    private searchForm: HTMLFormElement;
 
     protected view = new EmployeeDeleteView('main');
 
@@ -11,10 +15,13 @@ export class EmployeeDeleteController extends Controller {
     }
 
     protected build(...info: any): void | Promise<void> {
-        this.view.update();
+        this.view.update({});
+        this.setListeners();
     }
 
     protected setListeners(): void {
-        throw new Error("Method not implemented.");
+        this.searchForm.addEventListener('submit', e => {
+            e.preventDefault();
+        });
     }
 }

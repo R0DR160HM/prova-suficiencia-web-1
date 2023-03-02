@@ -1,3 +1,4 @@
+import { state } from "../shared/core/state.js";
 import { DomInjector } from "../shared/decorators/dom-injection-decorator.js";
 import { EmployeeService } from "../shared/services/employee-service.js";
 import { EmployeeCreateFormView } from "../views/employee-create-form-view.js";
@@ -29,6 +30,9 @@ export class EmployeeCreateFormController extends Controller {
     protected build(error?: string, success = false): void | Promise<void> {
         this.view.update({ error, success });
         this.setListeners();
+        if (error) {
+            state.restore();
+        }
     }
     
     protected setListeners(): void {
@@ -39,6 +43,8 @@ export class EmployeeCreateFormController extends Controller {
     }
     
     private createEmployee() {
+        state.store();
+
         const name = this.nameInput.value;
         if (!name.trim()) {
             this.build('Informe um nome!');

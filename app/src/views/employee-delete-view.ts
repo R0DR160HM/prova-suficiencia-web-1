@@ -28,15 +28,9 @@ export class EmployeeDeleteView extends View<{ error?: string, employee?: Employ
 
             <form id="find-employee-form">
 
-                <div class="row m-0">
-                    <div class="col-12 col-md-10">
-                        <label for="employee-id-input">ID:</label>
-                        <input placeholder="Identificador do funcionário" id="employee-id-input" type="number" class="form-control">
-                    </div>
-                    <div class="col-12 col-md-2 text-start text-md-center">
-                        <button>Buscar</button>
-                    </div>
-                </div>
+                <label for="employee-id-input">ID:</label>
+                <input placeholder="Identificador do funcionário" id="employee-id-input" type="number" class="form-control">
+                <button class="btn btn-primary mt-3" type="submit">Buscar</button>
 
             </form>
 
