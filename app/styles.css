@@ -1,6 +1,7 @@
 :root {
-    --compact-sidebar: 120px;
-    --full-sidebar: 200px
+    --compact-sidebar: 80px;
+    --full-sidebar: 200px;
+    --sidebar-color: #001f44;
 }
 
 /* Universal styles */
@@ -38,8 +39,15 @@ header h1 {
     font-size: 2rem !important;
 }
 
-nav {
+#navigation-bar {
     position: fixed;
+    background: var(--sidebar-color);
+    z-index: 100;
+}
+
+#navigation-bar a {
+    text-decoration: none;
+    color: white;
 }
 
 ul li{
@@ -54,23 +62,34 @@ ul li{
     main {
         margin: 16px;
     }
-    nav {}
+    #navigation-bar {
+        height: 70px;
+        width: 100vw;
+        bottom: 0;
+        background-color: rgba(0, 31, 68, .8) !important;
+    }
 }
 /* Medium */
-@media only screen and (max-width: 840px) {
+@media only screen and (min-width: 600px) {
     main {
         margin: 24px;
-        margin-left: 120px;
+        margin-left: calc(var(--compact-sidebar) + 24px);
+    }
+    #navigation-bar {
+        height: calc(100vh - 70px);
+        top: 70px;
+        width: var(--compact-sidebar);
     }
 }
 /* Large */
 @media only screen and (min-width: 841px) {
     main {
         margin: 24px;
-        margin-left: 200px;
+        margin-left: calc(var(--full-sidebar) + 24px);
     }
-    nav {
+    #navigation-bar {
         height: calc(100vh - 70px);
         top: 70px;
+        width: var(--full-sidebar);
     }
 }
