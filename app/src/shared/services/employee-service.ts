@@ -85,4 +85,46 @@ export class EmployeeService {
         localStorage.setItem(this.SAVED_EMPLOYEES, JSON.stringify(employees));
     }
 
+    public async getById(id: number) {
+        const url = `${BASE_URL}/employee/${id}`;
+        return http.get<GenericResponse<Employee>>(url)
+            .then(response => {
+                if (response.data) {
+                    return new Employee(response.data);
+                } else {
+                    return this.getFromStorageById(id);
+                }
+            })
+            .catch(() => {
+                const employee =this.getFromStorageById(id);
+                if (employee) {
+                    return employee;
+                }
+                throw new Error('Não deu :(');
+            });
+    }
+
+    private getFromStorageById(id: number) {
+        const employees = this.restoreFromStorage();
+        const ids = employees.map(e => e.id);
+        const index = ids.indexOf(id);
+        if (id >= 0) {
+            return new Employee(employees[index]);
+        }
+        return null;
+    }
+
+    public async delete(id: number) {
+        const url = `${BASE_URL}/delete/${id}`;
+        const response = await http.delete(url);
+
+        const employees = this.restoreFromStorage();
+        const index = employees.map(e => e.id).indexOf(id)
+        employees.splice(index, 1);
+        localStorage.setItem(this.SAVED_EMPLOYEES, JSON.stringify(employees));
+
+        return response;
+        
+    }
+
 }
