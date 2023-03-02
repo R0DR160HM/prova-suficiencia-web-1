@@ -4,7 +4,7 @@
   "description": "Prova de suficiência para a disciplina de Desenvolvimento Web 1 do curso de Ciências da Computação da FURB",
   "main": "index.js",
   "scripts": {
-    "compile": "npx tsc",
+    "build": "npx tsc",
     "watch": "npx tsc --w",
     "serve": "lite-server --baseDir=app",
     "start": "concurrently --kill-others \"npm run watch\" \"npm run serve\""
