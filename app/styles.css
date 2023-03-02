@@ -71,6 +71,13 @@ ul li{
     #navigation-bar span {
         display: none;
     }
+    #navigation-bar li {
+        /* float: left; */
+        width: calc(100vw / 4);
+        text-align: center;
+        height: 70px;
+        display: table-cell;
+    }
 }
 /* Medium */
 @media only screen and (min-width: 600px) {
