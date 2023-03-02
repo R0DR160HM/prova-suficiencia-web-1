@@ -25,7 +25,7 @@ function remove<T>(url: string) {
 }
 
 function post<T>(url: string, body: any) {
-    return request(url, HttpMethod.POST, body);
+    return request<T>(url, HttpMethod.POST, body);
 }
 
 function put<T>(url: string, body: any) {

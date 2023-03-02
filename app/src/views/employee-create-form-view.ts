@@ -1,13 +1,32 @@
 import { View } from "./view.js";
 
-export class EmployeeCreateFormView extends View<undefined> {
+export class EmployeeCreateFormView extends View<{ error: string, success: boolean }> {
     
-    protected template(): string {
+    protected template(info: { error: string, success: boolean }): string {
         return `
         
         <section class="card p-5">
             <h2 class="mb-3">Cadastrar funcionário</h2>
-            <form>
+
+            ${ info.error ? `
+            <div role="alert" class="alert alert-danger">
+                <p class="m-0">
+                    <i class="fa fa-exclamation-circle me-2"></i>
+                    ${ info.error }
+                </p>
+            </div>
+            ` : '' }
+            
+            ${ !info.error && info.success ? `
+            <div role="alert" class="alert alert-success">
+                <p class="m-0">
+                    <i class="fa fa-smile me-2"></i>
+                    Funcionário cadastrado com sucesso
+                </p>
+            </div>
+            ` : '' }
+
+            <form id="new-employee-form">
 
                 <div class="row m-0">
                     <div class="col-12 p-2">
@@ -25,7 +44,7 @@ export class EmployeeCreateFormView extends View<undefined> {
                 </div>
 
                 <div class="m-2 mt-3 text-center text-md-start">
-                    <button class="btn btn-primary">Cadastrar</button>
+                    <button class="btn btn-primary" type="submit">Cadastrar</button>
                 </div>
 
             </form>

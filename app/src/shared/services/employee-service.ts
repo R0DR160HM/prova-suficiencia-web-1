@@ -25,7 +25,8 @@ export class EmployeeService {
             pageIndex,
             pageSize,
             (startIndex + pageSize) < length,
-            pageIndex !== 0
+            pageIndex !== 0,
+            length
         );
     }
 
@@ -62,6 +63,26 @@ export class EmployeeService {
         localStorage.setItem(this.SAVED_EMPLOYEES, JSON.stringify(savedEmployees));
 
         return savedEmployees;
+    }
+
+    public async createEmployee(name: string, salary: number, age: number) {
+        const url = `${BASE_URL}/create`;
+        const response = await http.post<GenericResponse<any>>(url, { name, salary, age });
+        const employee = Employee.fromResponse(response.data);
+        this.saveEmployee(employee);
+        return employee;
+    }
+
+    private saveEmployee(employee: Employee) {
+        const employees = this.restoreFromStorage();
+        const ids = employees.map(e => e.id);
+        const index = ids.indexOf(employee.id);
+        if (index < 0) {
+            employees.push(employee);
+        } else {
+            employees[index] = employee;
+        }
+        localStorage.setItem(this.SAVED_EMPLOYEES, JSON.stringify(employees));
     }
 
 }

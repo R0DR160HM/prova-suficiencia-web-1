@@ -21,7 +21,7 @@ export class EmployeesListController extends Controller {
         super();
         this.build(0);
     }
-    
+
     protected setListeners() {
         this.paginatorPrevious.addEventListener('click', e => {
             e.preventDefault();
@@ -37,7 +37,7 @@ export class EmployeesListController extends Controller {
         });
     }
 
-    protected async build(pageIndex: number) {
+    protected async build(pageIndex: number = 0) {
         this.employees = await this.service.fetch(pageIndex, 5)
         this.view.update(this.employees);
         this.setListeners();

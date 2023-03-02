@@ -68,6 +68,9 @@ ul li{
         bottom: 0;
         background-color: rgba(0, 31, 68, .8) !important;
     }
+    #navigation-bar span {
+        display: none;
+    }
 }
 /* Medium */
 @media only screen and (min-width: 600px) {
@@ -79,6 +82,16 @@ ul li{
         height: calc(100vh - 70px);
         top: 70px;
         width: var(--compact-sidebar);
+        transition: 150ms;
+    }
+    #navigation-bar span {
+        display: none;
+    }
+    #navigation-bar:hover {
+        width: var(--full-sidebar);
+    }
+    #navigation-bar:hover span {
+        display: initial;
     }
 }
 /* Large */
@@ -91,5 +104,8 @@ ul li{
         height: calc(100vh - 70px);
         top: 70px;
         width: var(--full-sidebar);
+    }
+    #navigation-bar span {
+        display: initial;
     }
 }

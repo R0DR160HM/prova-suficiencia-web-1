@@ -31,9 +31,13 @@ export class Employee {
         }
     }
     public get salary() {
-        return this.salary;
+        return this.employee_salary;
+    }
+    public get formattedSalary() {
+        return this.salary.toFixed(2).replace(/\./g, ',');
     }
 
+    
     public set age(age: number) {
         if (age >= 14) {
             this.employee_age = age;
@@ -47,6 +51,16 @@ export class Employee {
         this.profile_image = resource || '';
     }
     public get profileImage() {
-        return this.profile_image
+        return this.profile_image || 'assets/portrait-placeholder.png';
+    }
+
+    public static fromResponse(response: { id: number, age: number, salary: number, name: string }) {
+        return new Employee({
+            id: response.id,
+            employee_name: response.name,
+            employee_salary: response.salary,
+            employee_age: response.age,
+            profile_image: ''
+        } as any);
     }
 }

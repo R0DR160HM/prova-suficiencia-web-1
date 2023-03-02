@@ -5,7 +5,8 @@ export class PageableResponse<T> {
         public pageIndex: number,
         public pageSize: number,
         public hasNext: boolean,
-        public hasPrevious: boolean
+        public hasPrevious: boolean,
+        public totalElements: number
     ) {}
 
 }
