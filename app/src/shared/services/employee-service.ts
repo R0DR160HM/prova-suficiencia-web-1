@@ -122,9 +122,26 @@ export class EmployeeService {
         const index = employees.map(e => e.id).indexOf(id)
         employees.splice(index, 1);
         localStorage.setItem(this.SAVED_EMPLOYEES, JSON.stringify(employees));
-
+        
         return response;
         
+    }
+    
+    public async edit(id: number, name: string, age: number, salary: number) {
+        const url = `${BASE_URL}/update/${id}`;
+        const response = await http.put<GenericResponse<{ name: string, age: number, salary: number }>>(url, { name, age, salary });
+        
+        const employees = this.restoreFromStorage();
+        const index = employees.map(e => e.id).indexOf(id)
+        if (index >= 0) {
+            employees[index] = new Employee(employees[index]);
+            employees[index].name = name;
+            employees[index].age = age;
+            employees[index].salary = salary
+        }
+        localStorage.setItem(this.SAVED_EMPLOYEES, JSON.stringify(employees));
+
+        return response;
     }
 
 }

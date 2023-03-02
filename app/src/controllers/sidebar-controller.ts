@@ -2,6 +2,7 @@ import { DomInjector } from "../shared/decorators/dom-injection-decorator.js";
 import { ISidebarItem } from "../shared/models/SidebarItem.js";
 import { SidebarView } from "../views/sidebar-view.js";
 import { Controller } from "./controller.js";
+import { EditEmployeeController } from "./edit-employee-controller.js";
 import { EmployeeCreateFormController } from "./employee-create-form-controller.js";
 import { EmployeeDeleteController } from "./employee-delete-controller.js";
 import { EmployeesListController } from "./employees-list-controller.js";
@@ -17,12 +18,16 @@ export class SidebarController extends Controller {
     @DomInjector('#menu-delete')
     private deleteButton: HTMLAnchorElement;
 
+    @DomInjector('#menu-edit')
+    private editButton: HTMLAnchorElement;
+
     protected view = new SidebarView('#navigation-bar');
     
     private items: ISidebarItem[] = [
         { id: 'menu-list', icon: 'fa fa-list', description: 'Listar' },
         { id: 'menu-create', icon: 'fa fa-plus-square', description: 'Cadastrar' },
-        { id: 'menu-delete', icon: 'fa fa-trash', description: 'Excluir' }
+        { id: 'menu-delete', icon: 'fa fa-trash', description: 'Excluir' },
+        { id: 'menu-edit', icon: 'fa fa-pen', description: 'Alterar' }
     ]
     private onPageChangeFn: (controller: Controller) => void
 
@@ -44,11 +49,15 @@ export class SidebarController extends Controller {
         this.createButton.addEventListener('click', e => {
             e.preventDefault();
             this.changePage(new EmployeeCreateFormController());
-        })
+        });
         this.deleteButton.addEventListener('click', e => {
             e.preventDefault();
             this.changePage(new EmployeeDeleteController());
-        })
+        });
+        this.editButton.addEventListener('click', e => {
+            e.preventDefault();
+            this.changePage(new EditEmployeeController());
+        });
     }
 
     public onPageChange(callback: (controller: Controller) => void) {
