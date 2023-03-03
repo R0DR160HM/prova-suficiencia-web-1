@@ -69,6 +69,7 @@ ul li{
 @media only screen and (max-width: 600px) {
     main {
         margin: 16px;
+        margin-top: 86px;
     }
     #navigation-bar {
         height: 70px;
@@ -91,6 +92,7 @@ ul li{
 @media only screen and (min-width: 600px) {
     main {
         margin: 24px;
+        margin-top: 94px;
         margin-left: calc(var(--compact-sidebar) + 24px);
     }
     #navigation-bar {
@@ -113,6 +115,7 @@ ul li{
 @media only screen and (min-width: 841px) {
     main {
         margin: 24px;
+        margin-top: 94px;
         margin-left: calc(var(--full-sidebar) + 24px);
     }
     #navigation-bar {
