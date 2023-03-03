@@ -5,6 +5,11 @@ import { http } from "../core/http.js";
 
 const BASE_URL = 'https://dummy.restapiexample.com/api/v1';
 
+/**
+ * ! ATENÇÃO!
+ * Estou plenamente ciente que este arquivo é a epítome da gambiarra,
+ * mas como a API retorna erro 90% das vezes, essa gambiarra é necessária
+ */
 export class EmployeeService {
 
     private readonly SAVED_EMPLOYEES = 'saved-employees';
